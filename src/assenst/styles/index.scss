@@ -1,0 +1,15 @@
+/* Globals Styles */
+@import './globalMixins';
+@import './globalColors';
+@import './typography';
+@import './globalBreackPoints';
+
+/* Components */
+@import './components/navbar.scss';
+@import './components/home.scss';
+@import './components/footer.scss';
+@import './components/recipeCarousel.scss';
+
+body{
+    margin: 0px;
+}

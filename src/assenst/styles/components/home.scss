@@ -1,0 +1,104 @@
+.home {
+  @include HomeDefault;
+  &-background {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: url(../../bcq.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 416px;
+  }
+  &__tittle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &-text {
+      font: normal normal normal 74px/111px Poppins;
+      color: $textColorGroup1;
+      margin: 0px;
+    }
+    &-spam {
+      color: $textColorGroup1;
+      font: normal normal normal 67px/80px Monster-Clubhouse;
+      position: absolute;
+      margin-top: 108px;
+    }
+    &-recetas {
+      color: $textSpamColor;
+      padding: 0px 0px 0px 70px;
+      font: normal normal normal 67px/80px Monster-Clubhouse;
+      margin: 28px 0px 28px 0px;
+      height: 100%;
+    }
+  }
+  &__menu {
+    display: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    &-components {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 106px;
+      height: 85px;
+      box-shadow: 0px 5px 9px #8395a766;
+      border-radius: 10px;
+      opacity: 1;
+      background: transparent linear-gradient(180deg, #e9f1fa 0%, #ffffff 100%)
+        0% 0% no-repeat padding-box;
+      position: relative;
+      top: -32px;
+      font: normal normal medium 13px/20px Poppins;
+      color: $textColorGroup2;
+      letter-spacing: 0px;
+      margin: 15px 13px 15px 13px;
+    }
+    &-description {
+      margin: 5px;
+    }
+  }
+  &__recipecarousel {
+    display: flex;
+    overflow-x: auto;
+    height: 493px;
+    @include globalSectionPadding;
+  }
+}
+@media (max-width: $bigBreackPoint) {
+  .home {
+    &__tittle-recetas {
+      font: normal normal normal 54px/65px Monster-Clubhouse;
+    }
+    &__menu {
+      display: flex;
+    }
+  }
+}
+@media (max-width: $mediumBreackPoint) {
+  .home {
+    &-background {
+      width: 100%;
+      height: 249px;
+    }
+    &__tittle {
+      &-recetas {
+        font: normal normal normal 54px/65px Monster-Clubhouse;
+        padding: 0px;
+        margin: auto;
+      }
+      &-text {
+        font: normal normal normal 51px/77px Poppins;
+      }
+      &-spam {
+        font: normal normal normal 51px/61px Monster-Clubhouse;
+      }
+    }
+    &__recipecarousel {
+      height: 420px;
+      padding: 0px 22px 0px 22px;
+    }
+  }
+}

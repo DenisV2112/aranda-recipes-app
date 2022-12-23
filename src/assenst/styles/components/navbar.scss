@@ -1,0 +1,41 @@
+
+.navbar{
+    @include NavbarDefault;
+    &__text{
+        font: normal normal normal 40px/48px Monster-Clubhouse;
+        letter-spacing: 1.15px;
+        text-transform: capitalize;
+        opacity: 1;
+        &-colorRed{
+            font: normal normal normal 30px/46px Poppins;
+            color: $textSpamColor;
+           
+        }
+    }
+    &__routes{
+        display: flex;
+        &-ul{
+            font: normal normal medium 13px/20px Poppins;
+            color: $textColorGroup2;
+            text-decoration: none;
+            margin: 0px 0px 0px 45px;
+            padding: 0px;
+             &:hover {
+                color: $textSpamColor;
+            }
+        }
+    }
+    &__home-img{
+        display: none;
+    }    
+}
+@media (max-width: $bigBreackPoint) {
+    .navbar{
+        &__routes{
+            display: none;
+        }
+        &__home-img{
+            display: flex;
+        }
+    }
+}

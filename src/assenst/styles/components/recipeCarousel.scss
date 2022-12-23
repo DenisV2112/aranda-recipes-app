@@ -1,0 +1,128 @@
+.carousel {
+  @include CarouselDefault;
+  &:hover {
+    height: 385.99px;
+    margin-bottom: 0px;
+    .carousel__food-text {
+      display: none;
+    }
+    .carousel-icons {
+      display: none;
+    }
+    .carousel__hoverElements {
+        &-contenedores{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &-img {
+        width: 17px;
+        height: 17px;
+
+       
+      }
+
+      &-description {
+        font: normal normal normal 17px/20px Monster-Clubhouse;
+        letter-spacing: 0px;
+        color: $textSpamColor;
+        margin: 5px;
+      }
+      &-info {
+        font: normal normal normal 15px/20px Poppins;
+        letter-spacing: 0px;
+        color: $textColorGroup2;
+        margin: 5px;
+      }
+    }
+  }
+
+  &__food {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: -60px;
+
+    &-img {
+      width: 160px;
+      height: 157px;
+      border-radius: 50%;
+    }
+    &-text {
+      font: normal normal normal 30px/36px Poppins;
+      font-family: Poppins;
+      color: $textSpamColor;
+      letter-spacing: -0.6px;
+      text-align: center;
+    }
+    &-spam {
+      font: normal normal normal 30px/36px Poppins;
+      font-family: Monster-Clubhouse;
+      color: $textSpamColor;
+      letter-spacing: -0.6px;
+    }
+  }
+  &-icons {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__star {
+    display: flex;
+
+    &-text {
+      font-family: poppins;
+      font-size: 26px;
+      color: $textColorGroup2;
+      padding: 12px;
+      margin: inherit;
+    }
+  }
+  &__hoverElements {
+    display: none;
+  }
+}
+
+@media(max-width: $mediumBreackPoint)  {
+ .carousel{
+  min-width: 180px;
+  min-height: 182px;
+  width: 180px;
+  height: 182px;
+  &:hover {
+    height: 350px;
+    margin-bottom: 0px;}
+  &__food{
+    &-img{width: 111px;
+      height: 107px;
+      
+      }
+      &-text{ font: normal normal normal 20px/24px Poppins;}
+     
+      &-spam{font: normal normal normal 20px/24px Monster-Clubhouse }
+ }
+ &-icons {
+  height: 20%;
+  
+}
+&__star{
+  width: 16px;
+  height: 16px;
+  &-text{font: normal normal normal 16px/26px Poppins;
+  letter-spacing: -0.34px;
+  padding: 0px 0px 0px 10px ;
+}}
+&__favorite{ width: 16px;
+  height: 16px;}
+
+ }
+ 
+ 
+  
+}

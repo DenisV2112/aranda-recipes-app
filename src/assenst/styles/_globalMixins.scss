@@ -1,0 +1,55 @@
+/* GLOBAL SECTION PADDING */
+@mixin globalSectionPadding {
+    padding: 0px 70px 0px 70px;
+}
+
+/* NAVBAR */
+@mixin NavbarDefault {
+    display: flex;
+    background-color: $backgroundColor;
+    color: $textColorGroup2;
+    justify-content: space-between;
+    align-items: center;
+    @include globalSectionPadding()
+    
+}
+
+/* FOOTER */
+@mixin FooterDefault {
+    height: 167.33px;
+    display: flex;
+    width: 100%;
+    background: transparent linear-gradient(180deg, #C2E3F3 0%, #6AA3C1 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 4px 6px 23px #a9a9a911;
+    opacity: 1;
+    position: absolute;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+/* HOME */
+@mixin HomeDefault {
+    display: flex;
+    flex-direction: column;
+    background-color: $backgroundColor;
+}
+
+/* RECIPECAROUSEL */
+@mixin  CarouselDefault {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 266px;
+    min-height: 270px;
+    opacity: 1;
+    position: relative;
+    box-shadow: 10px 10px 20px -5px #cccccc;
+    border-radius: 15px;
+    margin: 64px 25.82px 100px 25.82px;
+    list-style: none;
+    background: #ff030300 linear-gradient(180deg, #E9F1FA 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
+}
+
+
