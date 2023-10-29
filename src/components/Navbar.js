@@ -5,8 +5,13 @@ import axios from "axios";
 //Components
 import { menu, home } from "./menuComponents";
 
-export default function Navbar() {
-  const [post, setPost] = React.useState(null);
+//Hooks
+import { useControllers } from "../hooks/useControllers";
+
+function Navbar() {
+  
+
+  const setPost = useControllers();
 
   return (
     <nav className="navbar">
@@ -19,7 +24,7 @@ export default function Navbar() {
           onClick={function getRecipes() {
             axios
               .get(
-                `https://api.spoonacular.com/recipes/complexSearch?apiKey=fa85de31b05345ce861061c6ca0246a4&number=10`
+                `https://api.spoonacular.com/recipes/complexSearch?apiKey=fa85de31b05345ce861061c6ca0246a4&number=5`
               )
               .then((response) => {
                 setPost(response.data);
@@ -33,14 +38,14 @@ export default function Navbar() {
         {menu.map((e) => (
           <ul
             className="navbar__routes-ul"
-            onClick={function getRecipes() {
+            onClick={ function getRecipes(){
               axios
-                .get(e.onclick)
-                .then((response) => {
-                  setPost(response.data);
-                })
-                .then(console.log);
-              console.log("esta funcionando recetas " + e.name);
+               .get(e.onclick)
+               .then((response) => {
+                 setPost(response.data);
+               })
+               .then(console.log);
+              console.log("esta funcionando recetas " + e.name  +setPost + 'hello denis');
             }}
           >
             {e.shortname}
@@ -64,3 +69,4 @@ export default function Navbar() {
     </nav>
   );
 }
+export default Navbar;

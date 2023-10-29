@@ -9,22 +9,31 @@ import ic_portion from "../assenst/icons/ic_portion.svg";
 import ic_time from "../assenst/icons/ic_time.svg";
 import ic_chef from "../assenst/icons/ic_chef.svg";
 
-function RecipeCarousel({ ids }) {
-  const [recipes, setRecipes] = React.useState(null);
 
-  const getApiKey = "fa85de31b05345ce861061c6ca0246a4";
-  const infoURL = `https://api.spoonacular.com/recipes/${ids}/information?apiKey=${getApiKey}&includeNutrition=false`;
+function RecipeCarousel({ ids }) {
+ const[
+  recipes,
+  setRecipes
+  ] = React.useState('');
+//intentar crear esta constante en el hook
+  const getCarouselRecipes =()=>{
+    axios
+    .get(`https://api.spoonacular.com/recipes/${ids}${process.env.REACT_APP_ENDPOINT_RECIPES2}`)
+    .then((response) => {
+      setRecipes(response.data);
+    })
+    .then(console.log);
+  }
 
   React.useEffect(() => {
-    axios
-      .get(infoURL)
-      .then((response) => {
-        setRecipes(response.data);
-      })
-      .then(console.log);
+   getCarouselRecipes()
   }, []);
 
   if (!recipes) return null;
+  
+  if (ids !== recipes.id) 
+  getCarouselRecipes()
+    
 
   return (
     <>
@@ -39,10 +48,13 @@ function RecipeCarousel({ ids }) {
         <div className="carousel-icons">
           <div className="carousel__star">
             <img src={ic_star} />
-            <p className="carousel__star-text">5.0</p>
+            <p className="carousel__star-text"> {recipes.aggregateLikes}   </p>
           </div>
-
+          <div className="carousel__star">
           <img src={ic_favorite} className="carousel__favorite" />
+            <p className="carousel__star-text">{recipes.healthScore}</p>
+          </div>
+          
         </div>
         <div className="carousel__hoverElements">
           <div className="carousel__hoverElements-contenedores">

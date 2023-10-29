@@ -8,23 +8,24 @@ import RecipeCarousel from "./RecipeCarousel";
 //Menu Items
 import { menu } from "./menuComponents";
 
+//Hooks
+import { useControllers } from "../hooks/useControllers";
+
 function Home() {
-  const [post, setPost] = React.useState(null);
-  const getApiKey = "fa85de31b05345ce861061c6ca0246a4";
-  ////129ccc72911042a499ece3feffed492b
+  const [ 
+    post,
+    setPost,
+    getMainRecipes
+  ] = useControllers();
 
   React.useEffect(() => {
-    axios
-      .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${getApiKey}`
-      )
-      .then((response) => {
-        setPost(response.data);
-      })
-      .then(console.log);
-  }, []);
-  if (!post)
+    getMainRecipes();
+  },[]);
+
+  if (!post) 
+    
     return <div className="home__tittle-recetas">Page no was found</div>;
+
 
   return (
     <div className="home">
@@ -40,15 +41,7 @@ function Home() {
           <div
             type="button"
             className="home__menu-components"
-            onClick={function getRecipes() {
-              axios
-                .get(e.onclick)
-                .then((response) => {
-                  setPost(response.data);
-                })
-                .then(console.log);
-              console.log("esta funcionando recetas " + e.name);
-            }}
+            onClick={() => getMainRecipes()}   /*poner el e.onclick me genera un bucle de peticiones*/ 
           >
             {e.image}
             <p className="home__menu-description">{e.name}</p>
