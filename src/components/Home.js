@@ -14,14 +14,18 @@ import { useControllers } from "../hooks/useControllers";
 function Home() {
   const [ 
     post,
+    recipes,
     setPost,
-    getMainRecipes
+    setRecipes,
+    getRecipes,
+    getMainRecipes,
+    getRecipesCarousel
   ] = useControllers();
 
   React.useEffect(() => {
     getMainRecipes();
   },[]);
-
+  
   if (!post) 
     
     return <div className="home__tittle-recetas">Page no was found</div>;
@@ -41,7 +45,7 @@ function Home() {
           <div
             type="button"
             className="home__menu-components"
-            onClick={() => getMainRecipes()}   /*poner el e.onclick me genera un bucle de peticiones*/ 
+            onClick={() => getRecipes(e.query)}   
           >
             {e.image}
             <p className="home__menu-description">{e.name}</p>
@@ -52,10 +56,10 @@ function Home() {
       <div className="home__recipecarousel">
         {post.recipes == null
           ? post.results.map((e) => {
-              return <RecipeCarousel ids={e.id} />;
+              return <RecipeCarousel  ids={e.id}/>;
             })
           : post.recipes.map((e) => {
-              return <RecipeCarousel ids={e.id} />;
+              return <RecipeCarousel  ids={e.id}  />;
             })}
       </div>
     </div>

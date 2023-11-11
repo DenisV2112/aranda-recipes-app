@@ -9,30 +9,31 @@ import ic_portion from "../assenst/icons/ic_portion.svg";
 import ic_time from "../assenst/icons/ic_time.svg";
 import ic_chef from "../assenst/icons/ic_chef.svg";
 
+//Hooks
+import { useControllers } from "../hooks/useControllers";
 
-function RecipeCarousel({ ids }) {
- const[
-  recipes,
-  setRecipes
-  ] = React.useState('');
-//intentar crear esta constante en el hook
-  const getCarouselRecipes =()=>{
-    axios
-    .get(`https://api.spoonacular.com/recipes/${ids}${process.env.REACT_APP_ENDPOINT_RECIPES2}`)
-    .then((response) => {
-      setRecipes(response.data);
-    })
-    .then(console.log);
-  }
+
+function RecipeCarousel({ids}) {
+  const [ 
+    post,
+    recipes,
+    setPost,
+    setRecipes,
+    getRecipes,
+    getMainRecipes,
+    getRecipesCarousel,
+  ] = useControllers();
+
 
   React.useEffect(() => {
-   getCarouselRecipes()
-  }, []);
+  getRecipesCarousel(ids) }
+, []);
 
   if (!recipes) return null;
   
   if (ids !== recipes.id) 
-  getCarouselRecipes()
+  getRecipesCarousel(ids)
+
     
 
   return (
