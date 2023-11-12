@@ -14,4 +14,4 @@ Get recipes and nutritional information
       npm start
       
 ### Can also be run with deploy.
-      https://gleeful-swan-b7ec85.netlify.app
+      [https://gleeful-swan-b7ec85.netlify.app](https://aranda-recipes-app.netlify.app/)https://aranda-recipes-app.netlify.app/
