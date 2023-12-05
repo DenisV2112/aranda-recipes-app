@@ -16,7 +16,7 @@ import { useControllers } from "../hooks/useControllers";
 function RecipeCarousel({ids}) {
   const [ 
     post,
-    recipes,
+    recipe,
     setPost,
     setRecipes,
     getRecipes,
@@ -28,32 +28,31 @@ function RecipeCarousel({ids}) {
   React.useEffect(() => {
   getRecipesCarousel(ids) }
 , []);
-
-  if (!recipes) return null;
+ if(!recipe) return null;
   
-  if (ids !== recipes.id) 
+  if (ids !== recipe.id ) 
   getRecipesCarousel(ids)
 
-    
+  
 
   return (
     <>
-      <div key={recipes.id} className="carousel">
+      <div key={recipe.id} className="carousel">
         <div className="carousel__food">
-          <img className="carousel__food-img" src={recipes.image} />
+          <img className="carousel__food-img" src={recipe.image} />
           <h1 className="carousel__food-text">
-            {recipes.title}
+            {recipe.title}
             <spam className="carousel__food-spam">{}</spam>
           </h1>
         </div>{" "}
         <div className="carousel-icons">
           <div className="carousel__star">
             <img src={ic_star} />
-            <p className="carousel__star-text"> {recipes.aggregateLikes}   </p>
+            <p className="carousel__star-text"> {recipe.aggregateLikes}   </p>
           </div>
           <div className="carousel__star">
           <img src={ic_favorite} className="carousel__favorite" />
-            <p className="carousel__star-text">{recipes.healthScore}</p>
+            <p className="carousel__star-text">{recipe.healthScore}</p>
           </div>
           
         </div>
@@ -64,7 +63,7 @@ function RecipeCarousel({ids}) {
               Tamano de porcion
             </p>
             <p className="carousel__hoverElements-info">
-              {recipes.servings} raciones
+              {recipe.servings} raciones
             </p>
           </div>
           <div className="carousel__hoverElements-contenedores">
@@ -73,7 +72,7 @@ function RecipeCarousel({ids}) {
               Tiempo de preparacion
             </p>
             <p className="carousel__hoverElements-info">
-              {recipes.readyInMinutes} minutos
+              {recipe.readyInMinutes} minutos
             </p>
           </div>
           <div className="carousel__hoverElements-contenedores">

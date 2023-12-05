@@ -9,10 +9,16 @@ import { menu, home } from "./menuComponents";
 import { useControllers } from "../hooks/useControllers";
 
 function Navbar() {
+  const [ 
+    post,
+    recipes,
+    setPost,
+    setRecipes,
+    getRecipes,
+    getMainRecipes,
+    getRecipesCarousel
+  ] = useControllers();
   
-
-  const setPost = useControllers();
-
   return (
     <nav className="navbar">
       <div className="navbar__text">
@@ -21,32 +27,14 @@ function Navbar() {
       <div className="navbar__routes">
         <ul
           className="navbar__routes-ul"
-          onClick={function getRecipes() {
-            axios
-              .get(
-                `https://api.spoonacular.com/recipes/complexSearch?apiKey=fa85de31b05345ce861061c6ca0246a4&number=5`
-              )
-              .then((response) => {
-                setPost(response.data);
-              })
-              .then(console.log);
-            console.log("esta funcionando recetas home ");
-          }}
+          onClick={() => getRecipes(home.query)}
         >
           {home.name}
         </ul>
         {menu.map((e) => (
           <ul
             className="navbar__routes-ul"
-            onClick={ function getRecipes(){
-              axios
-               .get(e.onclick)
-               .then((response) => {
-                 setPost(response.data);
-               })
-               .then(console.log);
-              console.log("esta funcionando recetas " + e.name  +setPost + 'hello denis');
-            }}
+            onClick={() => getRecipes(e.query)}
           >
             {e.shortname}
           </ul>
@@ -54,15 +42,7 @@ function Navbar() {
       </div>
       <div
         className="navbar__home-img"
-        onClick={function getRecipes() {
-          axios
-            .get(home.url)
-            .then((response) => {
-              setPost(response.data);
-            })
-            .then(console.log);
-          console.log("esta funcionando recetas home");
-        }}
+        onClick={() => getRecipes(home.query)}
       >
         {home.image}
       </div>

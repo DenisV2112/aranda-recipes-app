@@ -6,7 +6,7 @@ import axios from "axios";
 import RecipeCarousel from "./RecipeCarousel";
 
 //Menu Items
-import { menu } from "./menuComponents";
+import { menu, home } from "./menuComponents";
 
 //Hooks
 import { useControllers } from "../hooks/useControllers";
@@ -14,7 +14,7 @@ import { useControllers } from "../hooks/useControllers";
 function Home() {
   const [ 
     post,
-    recipes,
+    recipe,
     setPost,
     setRecipes,
     getRecipes,
@@ -25,13 +25,18 @@ function Home() {
   React.useEffect(() => {
     getMainRecipes();
   },[]);
+  console.log('recipes:', recipe 
+   )
   
   if (!post) 
     
     return <div className="home__tittle-recetas">Page no was found</div>;
+ //Cambiar pplatos principales porque retorna lo mismo que vegetarianos
 
 
   return (
+  <div> 
+   
     <div className="home">
       <div className="home-background">
         <div className="home__tittle">
@@ -54,8 +59,9 @@ function Home() {
       </div>
       <h1 className="home__tittle-recetas">Nuevas Recetas</h1>
       <div className="home__recipecarousel">
-        {post.recipes == null
+        {   recipe? <div className="home__tittle-recetas">Daily points limit, come back later</div> : post.recipes == null
           ? post.results.map((e) => {
+            
               return <RecipeCarousel  ids={e.id}/>;
             })
           : post.recipes.map((e) => {
@@ -63,6 +69,6 @@ function Home() {
             })}
       </div>
     </div>
-  );
+  </div>);
 }
 export default Home;

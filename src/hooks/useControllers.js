@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const useControllers = () => {
  const [post, setPost] = useState();
- const[recipes, setRecipes] = useState();
+ const[recipe, setRecipe] = useState();
   
  const getMainRecipes = () => {
   axios
@@ -33,11 +33,11 @@ const getRecipes = (query) => {
 };
 
 const getRecipesCarousel = (ids) => {
-
+ 
   axios
   .get(`https://api.spoonacular.com/recipes/${ids}${process.env.REACT_APP_ENDPOINT_RECIPES2}`)
   .then((response) => {
-    setRecipes(response.data);
+    setRecipe(response.data);
   })
   .then(console.log);
 
@@ -46,9 +46,9 @@ const getRecipesCarousel = (ids) => {
 
   return [
     post, 
-    recipes,
+    recipe,
     setPost,
-    setRecipes,
+    setRecipe,
     getRecipes,
     getMainRecipes,
     getRecipesCarousel
